@@ -1,17 +1,17 @@
 extends Button
 class_name AutoButton
 
-@export var automation: Automation
+@onready var automation = get_parent().automation
 
 func _ready() -> void:
 	pressed.connect(_on_pressed)
-	automation.automation_update.connect(_update)
-	_update_label()
-	
+	update(automation)
+	automation.automation_update.connect(update)
+
 func _on_pressed() -> void:
 	automation.buy()
 
-func _update(who):
+func update(who):
 	_update_label()
 
 func _update_label():

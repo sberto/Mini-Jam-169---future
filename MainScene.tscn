@@ -1,11 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://dqnfly3i70pys"]
+[gd_scene load_steps=12 format=3 uid="uid://dqnfly3i70pys"]
 
 [ext_resource type="Shader" path="res://MainScene.gdshader" id="1_6ggr6"]
 [ext_resource type="Script" path="res://currency.gd" id="2_w6h63"]
 [ext_resource type="Script" path="res://button.gd" id="2_xuw8u"]
 [ext_resource type="Script" path="res://automations/automation.gd" id="3_njlud"]
 [ext_resource type="Script" path="res://automations/automations.gd" id="4_jm6mp"]
-[ext_resource type="Resource" uid="uid://cm3b5iy2chu0v" path="res://automations/resources/Fireball.tres" id="6_bh2v6"]
+[ext_resource type="Script" path="res://automations/automation_resource.gd" id="5_br6n6"]
 [ext_resource type="Script" path="res://tick.gd" id="7_sw415"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vg3qj"]
@@ -26,6 +26,26 @@ shader_parameter/pixel_filter = 698.52
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ugobn"]
 
+[sub_resource type="Resource" id="Resource_2suqj"]
+script = ExtResource("5_br6n6")
+amount = 1
+amount_upgrade = 2
+amount_upgrade_type = 0
+cost = 1
+cost_upgrade = 3
+cost_upgrade_type = 0
+ticks_for_update = 1
+
+[sub_resource type="Resource" id="Resource_de5dc"]
+script = ExtResource("5_br6n6")
+amount = 5
+amount_upgrade = 10
+amount_upgrade_type = 0
+cost = 3
+cost_upgrade = 1
+cost_upgrade_type = 1
+ticks_for_update = 5
+
 [node name="Control" type="Panel"]
 material = SubResource("ShaderMaterial_vg3qj")
 anchors_preset = 15
@@ -42,7 +62,11 @@ script = ExtResource("4_jm6mp")
 
 [node name="Fireball" type="Node" parent="Automations"]
 script = ExtResource("3_njlud")
-res = ExtResource("6_bh2v6")
+res = SubResource("Resource_2suqj")
+
+[node name="BlackMagic" type="Node" parent="Automations"]
+script = ExtResource("3_njlud")
+res = SubResource("Resource_de5dc")
 
 [node name="Tick" type="Node" parent="."]
 unique_name_in_owner = true
