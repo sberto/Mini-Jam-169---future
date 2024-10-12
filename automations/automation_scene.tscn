@@ -9,14 +9,18 @@ script/source = "extends BoxContainer
 
 @export var automation: Automation
 @onready var button = $AutoButton
+@onready var timer = $AutoProgressBar/AutoTimer
 
 func set_automation(node):
 	print(\"update button\")
 	automation = node
 	pass
+
+func pause(is_pause):
+	timer.paused = is_pause
 "
 
-[node name="ButtonRoot" type="VBoxContainer"]
+[node name="ButtonRoot" type="VBoxContainer" groups=["Automation"]]
 offset_right = 162.0
 offset_bottom = 40.0
 script = SubResource("GDScript_2mr7r")
