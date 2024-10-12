@@ -1,0 +1,79 @@
+[gd_scene load_steps=10 format=3 uid="uid://dqnfly3i70pys"]
+
+[ext_resource type="Shader" path="res://MainScene.gdshader" id="1_6ggr6"]
+[ext_resource type="Script" path="res://currency.gd" id="2_w6h63"]
+[ext_resource type="Script" path="res://button.gd" id="2_xuw8u"]
+[ext_resource type="Script" path="res://automations/automation.gd" id="3_njlud"]
+[ext_resource type="Script" path="res://automations/automations.gd" id="4_jm6mp"]
+[ext_resource type="Resource" uid="uid://cm3b5iy2chu0v" path="res://automations/resources/Fireball.tres" id="6_bh2v6"]
+[ext_resource type="Script" path="res://tick.gd" id="7_sw415"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vg3qj"]
+shader = ExtResource("1_6ggr6")
+shader_parameter/polar_coordinates = false
+shader_parameter/polar_center = Vector2(0.5, 0.5)
+shader_parameter/polar_zoom = 1.0
+shader_parameter/polar_repeat = 1.0
+shader_parameter/spin_rotation = 0.0
+shader_parameter/spin_speed = 3.0
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/colour_1 = Color(0.5546, 0.5546, 0.94, 1)
+shader_parameter/colour_2 = Color(0.965436, 0.817968, 0.70738, 1)
+shader_parameter/colour_3 = Color(0.36, 0.2808, 0.36, 1)
+shader_parameter/contrast = 1.0
+shader_parameter/spin_amount = 0.5
+shader_parameter/pixel_filter = 698.52
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ugobn"]
+
+[node name="Control" type="Panel"]
+material = SubResource("ShaderMaterial_vg3qj")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ugobn")
+metadata/_edit_lock_ = true
+
+[node name="Automations" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_jm6mp")
+
+[node name="Fireball" type="Node" parent="Automations"]
+script = ExtResource("3_njlud")
+res = ExtResource("6_bh2v6")
+
+[node name="Tick" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("7_sw415")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Currency" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 200
+text = "12"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_w6h63")
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(100, 25)
+layout_mode = 2
+text = "Click me!"
+script = ExtResource("2_xuw8u")
+
+[node name="AutomationsContainer" type="GridContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[connection signal="pressed" from="VBoxContainer/Button" to="VBoxContainer/Button" method="_on_pressed"]
