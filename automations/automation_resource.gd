@@ -19,9 +19,11 @@ var level: int = 0
 func _upgrade_this(this, delta, type):
 	match type:
 		UpgradeType.LINEAR: return this + delta
-		UpgradeType.QUADRATIC: return this + delta * this
+		UpgradeType.QUADRATIC: return this + delta * (this + 1)
 
 func upgrade():
+	print("old amount %s" % amount)
 	amount = _upgrade_this(amount, amount_upgrade, amount_upgrade_type)
+	print("new amount %s" % amount)
 	cost = _upgrade_this(cost, cost_upgrade, cost_upgrade_type)
 	level += 1

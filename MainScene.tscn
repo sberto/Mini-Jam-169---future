@@ -191,6 +191,20 @@ res = SubResource("Resource_ihe5x")
 script = ExtResource("3_njlud")
 res = SubResource("Resource_mr41h")
 
+[node name="Currency" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 200
+text = "12"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_w6h63")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -199,25 +213,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Currency" type="Label" parent="VBoxContainer"]
+[node name="AutomationsContainer" type="GridContainer" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 200
-text = "12"
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("2_w6h63")
+size_flags_vertical = 3
 
 [node name="Button" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(100, 25)
 layout_mode = 2
 text = "Poke enemy"
 script = ExtResource("2_xuw8u")
-
-[node name="AutomationsContainer" type="GridContainer" parent="VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 3
 
 [node name="ObjectivesNode" type="Node" parent="."]
 
