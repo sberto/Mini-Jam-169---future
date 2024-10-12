@@ -10,12 +10,12 @@ var amount_spent = 0:
 var automations_bought = 0:
 	set(v):
 		check()
-		amount_spent = v
+		automations_bought = v
 		
 var ticks_passed = 0:
 	set(v):
 		check()
-		amount_spent = v
+		ticks_passed = v
 		
 func check():
 	for obj: Objective in get_tree().get_nodes_in_group("Objectives"):
@@ -32,6 +32,6 @@ func check():
 						_reached(obj)
 			
 func _reached(obj: Objective):
-	print("reached!")
+	print("reached %s!" % obj.name)
 	obj.reached = true
 	reached.emit(obj)

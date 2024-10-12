@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dqnfly3i70pys"]
+[gd_scene load_steps=21 format=3 uid="uid://dqnfly3i70pys"]
 
 [ext_resource type="Shader" path="res://MainScene.gdshader" id="1_6ggr6"]
 [ext_resource type="Script" path="res://currency.gd" id="2_w6h63"]
@@ -27,47 +27,113 @@ shader_parameter/pixel_filter = 698.52
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ugobn"]
 
-[sub_resource type="Resource" id="Resource_2suqj"]
+[sub_resource type="Resource" id="Resource_hoads"]
 script = ExtResource("5_br6n6")
-amount_upgrade = 5
+amount_upgrade = 10
 amount_upgrade_type = 0
-cost = 1
-cost_upgrade = 3
+cost = 10
+cost_upgrade = 20
 cost_upgrade_type = 0
 ticks_for_update = 1
 extra_effect = 0
 freeze_time = 1
 
-[sub_resource type="Resource" id="Resource_de5dc"]
+[sub_resource type="Resource" id="Resource_wgy2b"]
+script = ExtResource("5_br6n6")
+amount_upgrade = 15
+amount_upgrade_type = 0
+cost = 15
+cost_upgrade = 20
+cost_upgrade_type = 0
+ticks_for_update = 1
+extra_effect = 0
+freeze_time = 1
+
+[sub_resource type="Resource" id="Resource_dree5"]
+script = ExtResource("5_br6n6")
+amount_upgrade = 20
+amount_upgrade_type = 0
+cost = 20
+cost_upgrade = 30
+cost_upgrade_type = 0
+ticks_for_update = 3
+extra_effect = 0
+freeze_time = 1
+
+[sub_resource type="Resource" id="Resource_diibp"]
+script = ExtResource("5_br6n6")
+amount_upgrade = 30
+amount_upgrade_type = 0
+cost = 30
+cost_upgrade = 60
+cost_upgrade_type = 0
+ticks_for_update = 4
+extra_effect = 0
+freeze_time = 1
+
+[sub_resource type="Resource" id="Resource_fhrdi"]
+script = ExtResource("5_br6n6")
+amount_upgrade = 100
+amount_upgrade_type = 0
+cost = 150
+cost_upgrade = 200
+cost_upgrade_type = 0
+ticks_for_update = 20
+extra_effect = 0
+freeze_time = 1
+
+[sub_resource type="Resource" id="Resource_wkiei"]
+script = ExtResource("5_br6n6")
+amount_upgrade = 1000
+amount_upgrade_type = 0
+cost = 800
+cost_upgrade = 2000
+cost_upgrade_type = 0
+ticks_for_update = 20
+extra_effect = 0
+freeze_time = 1
+
+[sub_resource type="Resource" id="Resource_ug4rb"]
 script = ExtResource("5_br6n6")
 amount_upgrade = 10
-amount_upgrade_type = 0
-cost = 3
-cost_upgrade = 1
+amount_upgrade_type = 1
+cost = 10
+cost_upgrade = 30
 cost_upgrade_type = 1
-ticks_for_update = 5
+ticks_for_update = 30
+extra_effect = 0
+freeze_time = 1
+
+[sub_resource type="Resource" id="Resource_heq3o"]
+script = ExtResource("5_br6n6")
+amount_upgrade = 11
+amount_upgrade_type = 1
+cost = 5
+cost_upgrade = 50
+cost_upgrade_type = 1
+ticks_for_update = 50
 extra_effect = 0
 freeze_time = 1
 
 [sub_resource type="Resource" id="Resource_ihe5x"]
 script = ExtResource("5_br6n6")
-amount_upgrade = 0
+amount_upgrade = 500
 amount_upgrade_type = 0
-cost = 0
-cost_upgrade = 0
-cost_upgrade_type = 0
-ticks_for_update = 1
+cost = 1
+cost_upgrade = 2000
+cost_upgrade_type = 1
+ticks_for_update = 20
 extra_effect = 1
 freeze_time = 1
 
 [sub_resource type="Resource" id="Resource_mr41h"]
 script = ExtResource("5_br6n6")
-amount_upgrade = 0
+amount_upgrade = 200
 amount_upgrade_type = 0
-cost = 0
-cost_upgrade = 0
+cost = 50
+cost_upgrade = 5000
 cost_upgrade_type = 0
-ticks_for_update = 1
+ticks_for_update = 1000
 extra_effect = 2
 freeze_time = 3
 
@@ -87,17 +153,41 @@ script = ExtResource("4_jm6mp")
 
 [node name="Fireball" type="Node" parent="Automations"]
 script = ExtResource("3_njlud")
-res = SubResource("Resource_2suqj")
+res = SubResource("Resource_hoads")
 
-[node name="Black Magic" type="Node" parent="Automations"]
+[node name="Ice Spike" type="Node" parent="Automations"]
 script = ExtResource("3_njlud")
-res = SubResource("Resource_de5dc")
+res = SubResource("Resource_wgy2b")
 
-[node name="Slowdown Time" type="Node" parent="Automations"]
+[node name="Lightning Bolt" type="Node" parent="Automations"]
+script = ExtResource("3_njlud")
+res = SubResource("Resource_dree5")
+
+[node name="Poison Cloud" type="Node" parent="Automations"]
+script = ExtResource("3_njlud")
+res = SubResource("Resource_diibp")
+
+[node name="Earthquake" type="Node" parent="Automations"]
+script = ExtResource("3_njlud")
+res = SubResource("Resource_fhrdi")
+
+[node name="Arcane Missile" type="Node" parent="Automations"]
+script = ExtResource("3_njlud")
+res = SubResource("Resource_wkiei")
+
+[node name="Emberstorm" type="Node" parent="Automations"]
+script = ExtResource("3_njlud")
+res = SubResource("Resource_ug4rb")
+
+[node name="Soul Siphon" type="Node" parent="Automations"]
+script = ExtResource("3_njlud")
+res = SubResource("Resource_heq3o")
+
+[node name="Time Warp" type="Node" parent="Automations"]
 script = ExtResource("3_njlud")
 res = SubResource("Resource_ihe5x")
 
-[node name="TimeFreeze" type="Node" parent="Automations"]
+[node name="Time Freeze" type="Node" parent="Automations"]
 script = ExtResource("3_njlud")
 res = SubResource("Resource_mr41h")
 
@@ -121,7 +211,7 @@ script = ExtResource("2_w6h63")
 [node name="Button" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(100, 25)
 layout_mode = 2
-text = "Click me!"
+text = "Poke enemy"
 script = ExtResource("2_xuw8u")
 
 [node name="AutomationsContainer" type="GridContainer" parent="VBoxContainer"]
@@ -131,10 +221,86 @@ size_flags_vertical = 3
 
 [node name="ObjectivesNode" type="Node" parent="."]
 
-[node name="Spent 10" type="Node" parent="ObjectivesNode" groups=["Objectives"]]
+[node name="Spend 1" type="Node" parent="ObjectivesNode" groups=["Objectives"]]
 script = ExtResource("8_xyp38")
-target = 10
+target = 1
+description = "Your first money spent. So many memories..."
+
+[node name="Spend 50" type="Node" parent="ObjectivesNode" groups=["Objectives"]]
+script = ExtResource("8_xyp38")
+target = 50
 description = "The money you spent is nothing in compared of the future it brings."
+
+[node name="Spend 200" type="Node" parent="ObjectivesNode" groups=["Objectives"]]
+script = ExtResource("8_xyp38")
+target = 200
+description = "You are rich, aren't you?"
+
+[node name="Wait for long" type="Node" parent="ObjectivesNode" groups=["Objectives"]]
+script = ExtResource("8_xyp38")
+success_type = 2
+target = 10
+description = "Some time passed..."
+
+[node name="Wait for longer" type="Node" parent="ObjectivesNode" groups=["Objectives"]]
+script = ExtResource("8_xyp38")
+success_type = 2
+target = 40
+description = "You are someone who likes to wait, aren't you?"
+
+[node name="Wait for longest" type="Node" parent="ObjectivesNode" groups=["Objectives"]]
+script = ExtResource("8_xyp38")
+success_type = 2
+target = 120
+description = "Are you still there?"
+
+[node name="Wait for longester" type="Node" parent="ObjectivesNode" groups=["Objectives"]]
+script = ExtResource("8_xyp38")
+success_type = 2
+target = 200
+description = "Wow, you sure like this game"
+
+[node name="Wait for longestest" type="Node" parent="ObjectivesNode" groups=["Objectives"]]
+script = ExtResource("8_xyp38")
+success_type = 2
+target = 300
+description = "The developer didn't make it up to here. Congrats for the audacity"
+
+[node name="Money well spent" type="Node" parent="ObjectivesNode" groups=["Objectives"]]
+script = ExtResource("8_xyp38")
+success_type = 1
+target = 1
+description = "Your first magic"
+
+[node name="Money well spent 2" type="Node" parent="ObjectivesNode" groups=["Objectives"]]
+script = ExtResource("8_xyp38")
+success_type = 1
+target = 2
+description = "Your second magic"
+
+[node name="Money well spent 3" type="Node" parent="ObjectivesNode" groups=["Objectives"]]
+script = ExtResource("8_xyp38")
+success_type = 1
+target = 3
+description = "Your third magic"
+
+[node name="Money well spent 4" type="Node" parent="ObjectivesNode" groups=["Objectives"]]
+script = ExtResource("8_xyp38")
+success_type = 1
+target = 4
+description = "You understand where this is going?"
+
+[node name="Money well spent 10" type="Node" parent="ObjectivesNode" groups=["Objectives"]]
+script = ExtResource("8_xyp38")
+success_type = 1
+target = 10
+description = "Nice!"
+
+[node name="Money well spent!!" type="Node" parent="ObjectivesNode" groups=["Objectives"]]
+script = ExtResource("8_xyp38")
+success_type = 1
+target = 100
+description = "Wow so much magic"
 
 [node name="ObjReached" type="RichTextLabel" parent="."]
 layout_mode = 1

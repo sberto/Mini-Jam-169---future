@@ -8,5 +8,14 @@ func _ready() -> void:
 func _reached(what):
 	text = template % [what.name, what.description]
 	visible = true
-	await get_tree().create_timer(10).timeout
+	var timer = get_child(0)
+	if timer:
+		timer.wait_time = 3
+	else:
+		timer = Timer.new()
+		timer.wait_time = 3
+		add_child(timer)
+		
+	timer.start()
+	await timer.timeout
 	visible = false

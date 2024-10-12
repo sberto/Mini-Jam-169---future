@@ -1,29 +1,14 @@
 [gd_scene load_steps=5 format=3 uid="uid://bcnh3rhehvfcq"]
 
 [ext_resource type="Script" path="res://auto_progress_bar.gd" id="1_j5gi5"]
+[ext_resource type="Script" path="res://automations/automation_scene.gd" id="1_sr5we"]
 [ext_resource type="Script" path="res://automations/buy_button.gd" id="2_3wfkp"]
 [ext_resource type="Script" path="res://automations/auto_timer.gd" id="3_o4gsh"]
-
-[sub_resource type="GDScript" id="GDScript_2mr7r"]
-script/source = "extends BoxContainer
-
-@export var automation: Automation
-@onready var button = $AutoButton
-@onready var timer = $AutoProgressBar/AutoTimer
-
-func set_automation(node):
-	print(\"update button\")
-	automation = node
-	pass
-
-func pause(is_pause):
-	timer.paused = is_pause
-"
 
 [node name="ButtonRoot" type="VBoxContainer" groups=["Automation"]]
 offset_right = 162.0
 offset_bottom = 40.0
-script = SubResource("GDScript_2mr7r")
+script = ExtResource("1_sr5we")
 
 [node name="AutoButton" type="Button" parent="."]
 layout_mode = 2
