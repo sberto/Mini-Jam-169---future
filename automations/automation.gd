@@ -10,6 +10,8 @@ func buy():
 		res.upgrade()
 		_apply_upgrade_effects()
 		automation_update.emit(self)
+		Objectives.automations_bought += 1
+		Objectives.amount_spent += res.cost
 	
 func _apply_upgrade_effects():
 	match res.extra_effect:

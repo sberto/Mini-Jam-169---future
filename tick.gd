@@ -18,3 +18,4 @@ func _process(delta: float) -> void:
 		if time > tick_time:
 			time = time - tick_time
 			tick.emit()
+			Objectives.ticks_passed += 1
